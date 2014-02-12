@@ -1,0 +1,23 @@
+<form method="post" action="/post/adding/">
+    {% csrf_token %}
+    <label >Dog</label>
+    <input type="text" name="post_dog" value=""/>
+    <br />
+    <label >Date</label>
+    <input type="text" name="post_date" value=''/>
+    <br />
+    <label >Body</label>
+    <input type="text" name="post_body" value=""/>
+    <br />
+    <input type="submit" name="submit" value="submit"/>
+</form>
+
+{% if post_list %}
+<ul>
+    {% for post in post_list %}
+    <li><a href="/post/">{{ post.dog }}</a> </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No post</p>
+{% endif %}
