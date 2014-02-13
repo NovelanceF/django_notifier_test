@@ -5,9 +5,12 @@ from post.models import Post
 def post_index(request):
     post_list = Post.objects.order_by('-post_date')[:10]
     context = RequestContext(request, {
-        'post_list': post_list
-    })
-    return render(request, 'post/index.html', context)
+            'post_list': post_list
+        })
+    if request.user.is_authenticated():
+        return render(request, 'post/index.html', context)
+    else:
+        return render(request, 'notifier/index.html')
 
 def post_save(request):
     if request.POST.has_key('post_dog'):

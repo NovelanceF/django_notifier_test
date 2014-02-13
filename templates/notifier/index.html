@@ -1,1 +1,13 @@
-hehe
+{% if request.user.is_authenticated %}  
+        <div class="pull-right">  
+            <a href=>Welcome：{{request.user}}</a>
+            <a class="btn danger small" href="{% url 'notifier:logout_view' %}">zhu xiao</a>
+        </div>  
+{% else %}  
+          <form action='accounts/login/' method='post' class="pull-right">
+            {% csrf_token %}  
+            <input name='username' class="input-small" type="text" placeholder="username">
+            <input name='password' class="input-small" type="password" placeholder="password">
+            <button class="btn" type="submit">log in</button>
+          </form>  
+{% endif %} 

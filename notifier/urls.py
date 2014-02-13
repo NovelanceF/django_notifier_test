@@ -9,4 +9,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^post/', include('post.urls', namespace='post')),
+    url(r'^accounts/login/$', 'notifier.views.login_view', name='notifierin'),
+    url(r'^accounts/logout/$', 'notifier.views.logout_view', name='notifier'),
+    url(r'^accounts/relog/$', 'notifier.views.re_log', name='relog'),
 )
